@@ -9,6 +9,7 @@
 #include <opencv2/core/utils/logger.hpp>
 
 #include "RotateImage.h"
+#include "MakeTemplate.h"
 
 using namespace cv;
 using namespace std;

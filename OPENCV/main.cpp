@@ -1,21 +1,22 @@
 #include "main.h"
 
-void main()
-{
-    cv::utils::logging::setLogLevel(utils::logging::LOG_LEVEL_SILENT);
-    Mat src = imread("C:\\Users\\54681\\source\\repos\\OPENCV\\pic\\template.bmp");
-    vector<vector<Point2i>> points;
 
+int main() {
+    cv::Mat src = cv::imread("C:\\Users\\54681\\source\\repos\\OPENCV\\pic\\template.bmp");
+    cv::Mat dst;
     Mat gray;
-    cvtColor(src, gray, COLOR_BGR2GRAY);
-    medianBlur(gray, gray, 3);
-    threshold(gray, gray, 127, 255, THRESH_BINARY);
+    cvtColor(src, src, COLOR_BGR2GRAY);
+    medianBlur(src, gray, 3);
+    threshold(gray, src, 127, 255, THRESH_BINARY);
+  
+    for (int i = 0; i < 361; i++) {
+        rotate_image(src, dst, i);
+        Canny(dst, dst, 60, 180);
+        cv::imshow("src", src);
+        cv::imshow("dst", dst);
+        cv::waitKey(10);
 
-    Mat canny,rotate_canny;
-    
-    Canny(gray, canny, 60, 180);
-    rotate_image(canny, rotate_canny, 30);
+    }
 
-    imshow("123", rotate_canny);
-    waitKey(0);
+    return 0;
 }

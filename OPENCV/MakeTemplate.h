@@ -13,7 +13,8 @@
 using namespace cv;
 using namespace std;
 
-void makeTemplate(Mat const img, vector<vector<Point2i>> points);
+void makeTemplate(Mat& img, Mat& rotate_img,vector<vector<Point2i>> &points);
+void matching(Mat& img, Mat& matching, Mat& output, vector<vector<Point2i>>& points, double score, double greedy );
 
 #endif // !_MAKE_TEMPLATE_
 

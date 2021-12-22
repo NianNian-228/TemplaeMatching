@@ -3,7 +3,7 @@
 
 using namespace cv;
 
-void rotate_image(Mat& src, Mat& dst, float angle)
+void rotate_image(Mat &src, Mat& dst, float angle)
 {
     float radian = (float)(angle / 180.0 * CV_PI);
 
@@ -18,26 +18,34 @@ void rotate_image(Mat& src, Mat& dst, float angle)
     Mat affine_matrix = getRotationMatrix2D(center, angle, 1.0);//求得旋转矩阵
     warpAffine(dst, dst, affine_matrix, dst.size(), INTER_AREA, BORDER_REPLICATE);
 
-    //计算图像旋转之后包含图像的最大的矩形
-    float sinVal = abs(sin(radian));
-    float cosVal = abs(cos(radian));
-    Size targetSize((int)(src.cols * cosVal + src.rows * sinVal),
-        (int)(src.cols * sinVal + src.rows * cosVal));
+    ////计算图像旋转之后包含图像的最大的矩形
+    //float sinVal = abs(sin(radian));
+    //float cosVal = abs(cos(radian));
+    //Size targetSize((int)(src.cols * cosVal + src.rows * sinVal),
+    //    (int)(src.cols * sinVal + src.rows * cosVal));
 
-    //剪掉多余边框
-    int x = (dst.cols - targetSize.width) / 2;
-    int y = (dst.rows - targetSize.height) / 2;
-    Rect rect(x, y, targetSize.width, targetSize.height);
-    dst = Mat(dst, rect);
+    ////剪掉多余边框
+    //int x = (dst.cols - targetSize.width) / 2;
+    //int y = (dst.rows - targetSize.height) / 2;
+    //Rect rect(x, y, targetSize.width, targetSize.height);
+    //dst = Mat(dst, rect);
 }
-
+//
 //int main() {
 //    cv::Mat src = cv::imread("C:\\Users\\54681\\source\\repos\\OPENCV\\pic\\template.bmp");
 //    cv::Mat dst;
+//    Mat gray;
 //    cvtColor(src, src, COLOR_BGR2GRAY);
-//    rotate_image(src, dst, 50);
-//    cv::imshow("src", src);
-//    cv::imshow("dst", dst);
-//    cv::waitKey(0);
+//    medianBlur(src, gray, 3);
+//    threshold(gray, src, 127, 255, THRESH_BINARY);
+//    Canny(src, dst, 60, 180);
+//    for (int i = 0; i < 361; i++) {
+//        rotate_image(src, dst, 50);
+//        cv::imshow("src", src);
+//        cv::imshow("dst", dst);
+//        cv::waitKey(0);
+//
+//    }
+//
 //    return 0;
 //}
