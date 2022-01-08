@@ -145,12 +145,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MakeTemplate.cpp" />
+    <ClCompile Include="Match.cpp" />
     <ClCompile Include="RotateImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
-    <ClInclude Include="MakeTemplate.h" />
     <ClInclude Include="RotateImage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
